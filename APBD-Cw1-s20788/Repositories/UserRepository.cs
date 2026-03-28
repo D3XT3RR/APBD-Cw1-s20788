@@ -15,7 +15,7 @@ public class UserRepository
     public User Get(int id)
     {
         var user = _users.Find(u => u.Id == id);
-        return user ?? throw new UserNotFoundException($"User with id {id} not found");
+        return user ?? throw new UserNotFoundException(id);
     }
     
     public IReadOnlyList<User> GetAll()
