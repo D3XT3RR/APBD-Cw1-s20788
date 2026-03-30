@@ -76,10 +76,32 @@ foreach (var r in activeRentals)
     Console.WriteLine(r);
 }
 
+//Próba wypożyczenia niedostępnego sprzętu sprzętu
+try
+{
+    rentalService.RentEquipment(user.Id, projector.Id, DateTime.Now);
+}
+catch (ItemNotAvailableException e)
+{
+    Console.WriteLine(e.Message);
+}
+catch (Exception e)
+{
+    Console.WriteLine(e.Message);
+}
+
+
+
+
 
 //Zwrot sprzętu z przeliczeniem ewentualnej kary za opóźnienie
 rental = rentalService.ReturnEquipment(rental.Id);
 Console.WriteLine($"Rental {rental.Id} returned with penalty: {rental.Penalty}");
+
+rental = rentalService.RentEquipment(user2.Id, laptop.Id, DateTime.Now);
+Console.WriteLine($"Rental {rental.Id} created for user {user2.Id}.");
+rental = rentalService.ReturnEquipment(rental.Id);
+Console.WriteLine($"Rental {rental.Id} returned. Penalty: {rental.Penalty}");
 
 
 
