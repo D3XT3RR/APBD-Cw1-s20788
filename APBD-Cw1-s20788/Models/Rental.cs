@@ -13,8 +13,10 @@ public class Rental(User user, Item item, DateTime startDate): Entity
     
     public RentalStatus Status => ReturnDate is null ? RentalStatus.Active : RentalStatus.Returned;
     private DateTime DueDate => StartDate.AddDays(RentalRules.DefaultRentDuration);
-    public decimal Penalty => ReturnDate is null ? 0 : (ReturnDate.Value - DueDate).Days * RentalRules.PenaltyPerDay;
-    
+    public decimal Penalty =>
+        ReturnDate == null || ReturnDate <= DueDate
+            ? 0
+            : (ReturnDate.Value - DueDate).Days * RentalRules.PenaltyPerDay;
     public override string ToString()
     {
         return $"Rental ID: {Id}, User: {User.Id}, Item: {Item.Id}, Start Date: {StartDate}, Return Date: {ReturnDate}, Status: {Status}";
