@@ -1,3 +1,5 @@
+using APBD_Cw1_s20788.Enums;
+
 namespace APBD_Cw1_s20788.Models;
 
 public abstract class Item(int id, string name, EquipmentStatus status): Entity(id)
