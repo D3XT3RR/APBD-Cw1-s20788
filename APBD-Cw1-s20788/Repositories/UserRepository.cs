@@ -5,10 +5,12 @@ namespace APBD_Cw1_s20788.Repositories;
 
 public class UserRepository
 {
+    private int _nextId = 1;
     private readonly List<User> _users = [];
     
     public void Add(User user)
     {
+        user.Id = _nextId++;
         _users.Add(user);
     }
     
