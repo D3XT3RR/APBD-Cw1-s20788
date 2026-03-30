@@ -4,7 +4,7 @@ using APBD_Cw1_s20788.Repositories;
 
 namespace APBD_Cw1_s20788.Services;
 
-public class EquipmentService(EquipmentRepository equipmentRepository): IEquipmentService
+public class EquipmentService(EquipmentRepository equipmentRepository)
 {
    
    public Projector CreateProjector(string name, bool is3dCompatible, int lumens)

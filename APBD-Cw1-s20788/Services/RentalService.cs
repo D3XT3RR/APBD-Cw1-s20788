@@ -8,7 +8,7 @@ namespace APBD_Cw1_s20788.Services;
 
 public class RentalService(RentalRepository rentalRepository, 
     UserRepository userRepository, 
-    EquipmentRepository equipmentRepository): IRentalService
+    EquipmentRepository equipmentRepository)
 {
     public Rental RentEquipment(int userId, int itemId, DateTime? startDate)
     {

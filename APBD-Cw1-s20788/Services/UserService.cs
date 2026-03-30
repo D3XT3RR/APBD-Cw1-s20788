@@ -4,7 +4,7 @@ using APBD_Cw1_s20788.Repositories;
 
 namespace APBD_Cw1_s20788.Services;
 
-public class UserService(UserRepository userRepository): IUserService
+public class UserService(UserRepository userRepository)
 {
     public User CreateUser(string firstName, string lastName, UserType type)
     {
