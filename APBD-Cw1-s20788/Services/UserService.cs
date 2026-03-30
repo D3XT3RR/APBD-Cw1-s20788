@@ -4,25 +4,22 @@ using APBD_Cw1_s20788.Repositories;
 
 namespace APBD_Cw1_s20788.Services;
 
-public class UserService(UserRepository userRepository): IUserService
+public class UserService(UserRepository userRepository)
 {
-    private int _nextUserId = 1;
-    private readonly UserRepository _userRepository = userRepository;
-    
     public User CreateUser(string firstName, string lastName, UserType type)
     {
-        var user = new User(_nextUserId++, firstName, lastName, type);
-        _userRepository.Add(user);
+        var user = new User(firstName, lastName, type);
+        userRepository.Add(user);
         return user;
     }
 
     public User GetUser(int id)
     {
-        return _userRepository.Get(id);
+        return userRepository.Get(id);
     }
 
     public IReadOnlyList<User> GetAllUsers()
     {
-        return _userRepository.GetAll();
+        return userRepository.GetAll();
     }
 }
